@@ -1,0 +1,29 @@
+{% extends 'main/node.html' %}
+
+{% block back_button %}
+  <a href="{% url 'doc_stuff' %}" class="pad_left"><button type="button" class="btn btn-secondary "><h3>Назад</h3></button></a>
+{% endblock %}
+
+
+{% block form_name %}
+<h5 class="modal-title" id="nodeEditLabel">Редактирование сотрудника</h5>
+{% endblock %}
+
+{% block node_content %}
+        <div class="col-5">
+            <h1 class="note" ><span class="header_note">Фамилия:</span> <span class="value_note">{{note.last_name}}</span></h1>
+            <h1 class="note"><span class="header_note">Имя:</span> <span class="value_note">{{note.first_name}}</span></h1>
+            <h1 class="note" ><span class="header_note">Отчество:</span> <span class="value_note">{{note.patronymic}}</span></h1>
+            <h1 class="note" ><span class="header_note">Дата рождения:</span> <span class="value_note">{{note.birth_date}}</span></h1>
+            <h1 class="note" ><span class="header_note">Домашний адрес:</span> <span class="value_note">{{note.address}}</span></h1>
+            <h1 class="note" ><span class="header_note">Телефон:</span> <span class="value_note">{{note.phone}}</span></h1>
+        </div>
+        <div class="col-5">
+            <h1 class="note" ><span class="header_note">E-mail:</span> <span class="value_note">{{note.e_mail}}</span></h1>
+            <h1 class="note" ><span class="header_note">Дата принятия на работу:</span> <span class="value_note">{{note.registration_date}}</span></h1>
+            <h1 class="note" ><span class="header_note">Номер трудового договора:</span> <span class="value_note">{{note.num_of_employment_contract}}</span></h1>
+            <h1 class="note" ><span class="header_note">Срок действия трудового договора:</span> <span class="value_note">{{note.duration_of_contract}}</span></h1>
+            <h1 class="note" ><span class="header_note">Оклад:</span> <span class="value_note">{{note.salary}}</span></h1>
+            <h1 class="note" ><span class="header_note">Заведение:</span> <span class="value_note">{{note.branch}}</span></h1>
+        </div>
+{% endblock %}

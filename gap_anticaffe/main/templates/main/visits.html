@@ -1,0 +1,104 @@
+{% extends 'main/document.html' %}
+
+
+{% block form_add %}
+<div class="modal fade" id="nodeAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="nodeAddLabel">
+  <div class="modal-dialog modal-dialog-centered modal-lg ">
+    <div class="modal-content">
+         <form action="{% url 'doc_visits' %}" method="post" enctype="multipart/form-data">
+             {% csrf_token %}
+            <div class="modal-header text_dec">
+                <h5 class="modal-title" id="nodeAddLabel">Добавление нового посещения</h5>
+            </div>
+            <div class="modal-body text_dec">
+                <div class="container-fluid">
+                    <div class="row mb-3">
+                        {{form.non_field_errors}}
+                    </div>
+                    {% for f in form %}
+                    <div class="row mb-3">
+                        <div class="col-1">
+                        </div>
+                        <label for="{{ f.id_for_label }}" class="col-2 form-label">{{f.label}}: </label>
+                        <div class="col-8">
+                            {{ f }}
+                        </div>
+                        <div class="col-1">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            {{ f.errors }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'doc_visits' %}"><button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button></a>
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+         </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block form_search %}
+    <form action="{% url 'doc_visits' %}" method="post" class="">
+        {% csrf_token %}
+        <div class="row mb-3 align-content-center align-items-center justify-content-center">
+            <div class="col-9">
+                {{search_form.search}}
+            </div>
+            <div class="col-1">
+                <button class="btn btn-primary btn-lg btn_big_width" type="submit">Поиск</button>
+            </div>
+            <div class="col-2">
+                <a href="{% url 'doc_visits' %}"><button type="button" class="btn btn-primary btn-lg btn_big_width">Очистить</button></a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+
+{% block col_names %}
+    <div class="col-2">ID</div>
+    <div class="col-2">Дата</div>
+    <div class="col-2">Клиент</div>
+    <div class="col-2">Зарезервировано</div>
+    <div class="col-2">Время начала посещения</div>
+    <div class="col-2">Заведение</div>
+{% endblock %}
+
+{% block col_values %}
+    {% for r in note %}
+        <a href="{{ r.get_absolute_url }}" class="list-group-item list-group-item-action">
+            <div class="row">
+                <div class="col-2">{{r.pk}}</div>
+                <div class="col-2">{{r.date_of_visit}}</div>
+                <div class="col-2">{{r.client}}</div>
+                <div class="col-2">{{r.is_reserved}}</div>
+                <div class="col-2">{{r.time_start}}</div>
+                <div class="col-2">{{r.branch}}</div>
+            </div>
+        </a>
+    {% endfor %}
+{% endblock %}
+
+{% block js %}
+{% if open_form == 1 %}
+    <script type="text/javascript">
+        $(window).on('load', function() {
+            $('#nodeAdd').modal('show');
+        });
+    </script>
+{% else %}
+    <script type="text/javascript">
+        $(window).on('load', function() {
+            $('#nodeAdd').modal('hide');
+        });
+    </script>
+{% endif %}
+{% endblock %}

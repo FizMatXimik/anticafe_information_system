@@ -1,0 +1,22 @@
+{% extends 'main/node.html' %}
+
+{% block back_button %}
+  <a href="{% url 'doc_reservations' %}" class="pad_left"><button type="button" class="btn btn-secondary "><h3>Назад</h3></button></a>
+{% endblock %}
+
+
+{% block form_name %}
+<h5 class="modal-title" id="nodeEditLabel">Редактирование бронирования</h5>
+{% endblock %}
+
+{% block node_content %}
+        <div class="col-10">
+            <h1 class="note" ><span class="header_note">Дата и время бронирования:</span> <span class="value_note">{{note.date_time_of_reservation}}</span></h1>
+            <h1 class="note"><span class="header_note">Имя клиента:</span> <span class="value_note">{{note.client_name}}</span></h1>
+            <h1 class="note" ><span class="header_note">Объект бронирования:</span> <span class="value_note">{{note.object_of_reservation}}</span></h1>
+            <h1 class="note" ><span class="header_note">Мероприятие:</span> <span class="value_note">{{note.event}}</span></h1>
+            <h1 class="note" ><span class="header_note">Номер стола:</span> <span class="value_note">{{note.table_num}}</span></h1>
+            <h1 class="note" ><span class="header_note">Заведение:</span> <span class="value_note">{{note.branch}}</span></h1>
+            <h1 class="note" ><span class="header_note">Кол-во человек:</span> <span class="value_note">{{note.num_of_persons}}</span></h1>
+        </div>
+{% endblock %}

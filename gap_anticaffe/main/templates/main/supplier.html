@@ -1,0 +1,20 @@
+{% extends 'main/node.html' %}
+
+{% block back_button %}
+  <a href="{% url 'doc_suppliers' %}" class="pad_left"><button type="button" class="btn btn-secondary "><h3>Назад</h3></button></a>
+{% endblock %}
+
+
+{% block form_name %}
+<h5 class="modal-title" id="nodeEditLabel">Редактирование поставщика</h5>
+{% endblock %}
+
+{% block node_content %}
+        <div class="col-10">
+            <h1 class="note" ><span class="header_note">ФИО:</span> <span class="value_note">{{note.fio}}</span></h1>
+            <h1 class="note"><span class="header_note">ИНН:</span> <span class="value_note">{{note.inn}}</span></h1>
+            <h1 class="note" ><span class="header_note">Телефон:</span> <span class="value_note">{{note.phone}}</span></h1>
+            <h1 class="note" ><span class="header_note">E-mail:</span> <span class="value_note">{{note.e_mail}}</span></h1>
+            <h1 class="note" ><span class="header_note">Дата регистрации:</span> <span class="value_note">{{note.registration_date}}</span></h1>
+        </div>
+{% endblock %}

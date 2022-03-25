@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+
+{% block back_button %}
+  <a href="{% url 'menu_admin' %}" class="pad_left"><button type="button" class="btn btn-secondary "><h3>Назад</h3></button></a>
+{% endblock %}
+
+
+
+{% block doc_content %}
+<div class="container-xl">
+    {% block form_add %}
+    {% endblock %}
+    <div class="row align-content-center justify-content-center doc_title">
+        {% if not only_view %}
+        <div class="col-9">
+            <h1 class="doc_title_text">{{ title }}</h1>
+        </div>
+        <div class="col-3">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#nodeAdd" class="btn btn-primary btn-lg btn_big_width"><h3>Добавить запись</h3></button>
+        </div>
+        {% else %}
+        <div class="col">
+            <h1 class="doc_title_text">{{ title }}</h1>
+        </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col">
+            {% block form_search %}
+            {% endblock %}
+             <div class="list-group doc_table">
+                 <a class="list-group-item list-group-item-action">
+                    <div class="row">
+                        {% block col_names %}
+                        {% endblock %}
+                    </div>
+                  </a>
+                 <div class="list-group list_overflow">
+                    {% block col_values %}
+                    {% endblock %}
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

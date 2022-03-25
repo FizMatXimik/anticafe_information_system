@@ -1,0 +1,18 @@
+{% extends 'main/node.html' %}
+
+{% block back_button %}
+  <a href="{% url 'doc_price_list' %}" class="pad_left"><button type="button" class="btn btn-secondary "><h3>Назад</h3></button></a>
+{% endblock %}
+
+
+{% block form_name %}
+<h5 class="modal-title" id="nodeEditLabel">Редактирование записи в прейскуранте</h5>
+{% endblock %}
+
+{% block node_content %}
+        <div class="col-10">
+            <h1 class="note" ><span class="header_note">ID товара:</span> <span class="value_note">{{note.good_or_service.pk}}</span></h1>
+            <h1 class="note" ><span class="header_note">Наименование товара:</span> <span class="value_note">{{note.good_or_service.name}}</span></h1>
+            <h1 class="note"><span class="header_note">Цена:</span> <span class="value_note">{{note.price}}</span></h1>
+        </div>
+{% endblock %}

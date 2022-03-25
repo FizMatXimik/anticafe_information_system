@@ -1,0 +1,20 @@
+{% extends 'main/node.html' %}
+
+{% block back_button %}
+  <a href="{% url 'doc_g_s' %}" class="pad_left"><button type="button" class="btn btn-secondary "><h3>Назад</h3></button></a>
+{% endblock %}
+
+
+{% block form_name %}
+<h5 class="modal-title" id="nodeEditLabel">Редактирование товара/услуги</h5>
+{% endblock %}
+
+{% block node_content %}
+        <div class="col-10">
+            <h1 class="note" ><span class="header_note">Наименование:</span> <span class="value_note">{{note.name}}</span></h1>
+            <h1 class="note"><span class="header_note">Группа:</span> <span class="value_note">{{note.group}}</span></h1>
+            <h1 class="note" ><span class="header_note">Описание:</span> <span class="value_note">{{note.description|linebreaks}}</span></h1>
+            <h1 class="note" ><span class="header_note">Оставшееся количество:</span> <span class="value_note">{{note.remaining_quantity}}</span></h1>
+            <h1 class="note" ><span class="header_note">Заведение:</span> <span class="value_note">{{note.branch}}</span></h1>
+        </div>
+{% endblock %}

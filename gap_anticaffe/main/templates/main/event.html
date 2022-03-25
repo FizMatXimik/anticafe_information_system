@@ -1,0 +1,22 @@
+{% extends 'main/node.html' %}
+
+{% block back_button %}
+  <a href="{% url 'doc_events' %}" class="pad_left"><button type="button" class="btn btn-secondary "><h3>Назад</h3></button></a>
+{% endblock %}
+
+
+{% block form_name %}
+<h5 class="modal-title" id="nodeEditLabel">Редактирование мероприятия</h5>
+{% endblock %}
+
+{% block node_content %}
+        <div class="col-10">
+            <h1 class="note" ><span class="header_note">Наименование:</span> <span class="value_note">{{note.name}}</span></h1>
+            <h1 class="note"><span class="header_note">Описание:</span> <span class="value_note">{{note.description}}</span></h1>
+            <h1 class="note" ><span class="header_note">Дата и время:</span> <span class="value_note">{{note.date_time_of_event}}</span></h1>
+            <h1 class="note" ><span class="header_note">Текущее кол-во участников:</span> <span class="value_note">{{note.current_num_of_participants}}</span></h1>
+            <h1 class="note" ><span class="header_note">Максимальное кол-во участников:</span> <span class="value_note">{{note.max_num_of_participants}}</span></h1>
+            <h1 class="note" ><span class="header_note">Цена:</span> <span class="value_note">{{note.price}}</span></h1>
+            <h1 class="note" ><span class="header_note">Заведение:</span> <span class="value_note">{{note.branch}}</span></h1>
+        </div>
+{% endblock %}

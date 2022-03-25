@@ -1,0 +1,25 @@
+{% extends 'main/node.html' %}
+
+{% block back_button %}
+  <a href="{% url 'doc_visits' %}" class="pad_left"><button type="button" class="btn btn-secondary "><h3>Назад</h3></button></a>
+{% endblock %}
+
+
+{% block form_name %}
+<h5 class="modal-title" id="nodeEditLabel">Редактирование посещения</h5>
+{% endblock %}
+
+{% block node_content %}
+        <div class="col-5">
+            <h1 class="note" ><span class="header_note">Дата посещения:</span> <span class="value_note">{{note.date_of_visit}}</span></h1>
+            <h1 class="note"><span class="header_note">Клиент:</span> <span class="value_note">{{note.client}}</span></h1>
+            <h1 class="note" ><span class="header_note">Купленные товары и услуги:</span> <span class="value_note">{{note.goods_and_services}}</span></h1>
+            <h1 class="note" ><span class="header_note">Бронирование:</span> <span class="value_note">{{note.reservation}}</span></h1>
+        </div>
+        <div class="col-5">
+            <h1 class="note" ><span class="header_note">Время начала посещения:</span> <span class="value_note">{{note.time_start}}</span></h1>
+            <h1 class="note" ><span class="header_note">Время окончания посещения:</span> <span class="value_note">{{note.time_end}}</span></h1>
+            <h1 class="note" ><span class="header_note">Цена к оплате:</span> <span class="value_note">{{note.payment_price}}</span></h1>
+            <h1 class="note" ><span class="header_note">Заведение:</span> <span class="value_note">{{note.branch}}</span></h1>
+        </div>
+{% endblock %}

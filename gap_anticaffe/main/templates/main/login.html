@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+
+{% block login %}
+      <div class="btn-group float-end text_big">
+            {% block back_button %}
+              <a href="{% url 'main' %}" class="pad_left"><button type="button" class="btn btn-secondary "><h3>Назад</h3></button></a>
+            {% endblock %}
+      </div>
+      {% endblock %}
+
+{% block content %}
+<div class="container-xxl ">
+ <div class="row align-items-center justify-content-center">
+
+ <div class="col-md-offset-3 col-md-6">
+ <form class="form-horizontal marg" method="post">
+     {% csrf_token %}
+ <span class="heading">{{title}}</span>
+ <div class="form-group">
+  {{ form.username }}
+ </div>
+     <div class="form-group">
+  {{ form.password }}
+ </div>
+   <div class="form_error">{{form.errors}}</div>
+ <button type="submit" class="btn btn-default">Войти</button>
+ </form>
+ </div>
+ </div><!-- /.row -->
+</div><!-- /.container -->
+{% endblock %}

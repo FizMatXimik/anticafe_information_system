@@ -1,0 +1,83 @@
+{% extends 'main/base.html' %}
+
+
+{% block doc_content %}
+<div class="modal fade" id="nodeEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="nodeEditLabel">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+         <form action="{{ note.get_absolute_url }}" method="post" enctype="multipart/form-data">
+             {% csrf_token %}
+            <div class="modal-header text_dec">
+                {% block form_name %}
+                {% endblock %}
+            </div>
+            <div class="modal-body text_dec">
+                <div class="container-fluid">
+                    <div class="row mb-3">
+                        {{form.non_field_errors}}
+                    </div>
+                    {% for f in form %}
+                    <div class="row mb-3">
+                        <div class="col-1">
+                        </div>
+                        <label for="{{ f.id_for_label }}" class="col-2 form-label">{{f.label}}: </label>
+                        <div class="col-8">
+                            {{ f }}
+                        </div>
+                        <div class="col-1">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            {{ f.errors }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="{{ note.get_absolute_url }}"><button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button></a>
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+         </form>
+    </div>
+  </div>
+</div>
+<div class="container-fluid doc_cont">
+    <div class="row align-content-center justify-content-center info_row">
+        {% if not only_view %}
+        <div class="col-2">
+            <div class=""><button type="button" data-bs-toggle="modal" data-bs-target="#nodeEdit" class="btn btn-warning btn-lg btn_big_width"><h3>Редактировать</h3></button></div>
+            <form action="{{ note.get_absolute_url }}" method="post" class="">
+                {% csrf_token %}
+                {{del_form.delete}}
+                <div class="pad_bot_20"><button type="submit" class="btn btn-danger btn-lg btn_big_width"><h3>Удалить</h3></button></div>
+            </form>
+        </div>
+        {% endif %}
+        {% block node_content %}
+        {% endblock %}
+</div>
+
+{% endblock %}
+
+
+{% block back_button %}
+{% endblock %}
+
+
+{% block js %}
+{% if open_form == 1 %}
+    <script type="text/javascript">
+        $(window).on('load', function() {
+            $('#nodeEdit').modal('show');
+        });
+    </script>
+{% else %}
+    <script type="text/javascript">
+        $(window).on('load', function() {
+            $('#nodeEdit').modal('hide');
+        });
+    </script>
+{% endif %}
+{% endblock %}

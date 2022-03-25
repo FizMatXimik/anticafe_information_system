@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block login %}
+{% endblock %}
+
+{% block content %}
+<div class="row btn_row align-items-center justify-content-center">
+    {% for m in menu %}
+    <div class="row btn_row_item gy-4">
+        <div class="col">
+            <a href="{% url m.url_name %}"><button type="button" class="btn btn-primary btn-lg btn_big"><h1>{{ m.title }}</h1></button></a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

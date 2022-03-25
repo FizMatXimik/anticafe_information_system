@@ -1,0 +1,21 @@
+{% extends 'main/node.html' %}
+
+{% block back_button %}
+  <a href="{% url 'doc_contracts' %}" class="pad_left"><button type="button" class="btn btn-secondary "><h3>Назад</h3></button></a>
+{% endblock %}
+
+
+{% block form_name %}
+<h5 class="modal-title" id="nodeEditLabel">Редактирование контракта</h5>
+{% endblock %}
+
+{% block node_content %}
+        <div class="col-10">
+            <h1 class="note" ><span class="header_note">Номер контракта:</span> <span class="value_note">{{note.pk}}</span></h1>
+            <h1 class="note" ><span class="header_note">Товар/Услуга:</span> <span class="value_note">{{note.good_or_service}}</span></h1>
+            <h1 class="note"><span class="header_note">Поставщик:</span> <span class="value_note">{{note.supplier}}</span></h1>
+            <h1 class="note" ><span class="header_note">Количество поставляемых товаров/услуг:</span> <span class="value_note">{{note.quantity}}</span></h1>
+            <h1 class="note" ><span class="header_note">Цена поставки:</span> <span class="value_note">{{note.price}}</span></h1>
+            <h1 class="note" ><span class="header_note">График поставки:</span> <span class="value_note">{{note.delivery_schedule}}</span></h1>
+        </div>
+{% endblock %}

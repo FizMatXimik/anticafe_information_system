@@ -1,0 +1,27 @@
+{% extends 'main/node.html' %}
+
+{% block back_button %}
+  <a href="{% url 'doc_clients' %}" class="pad_left"><button type="button" class="btn btn-secondary "><h3>Назад</h3></button></a>
+{% endblock %}
+
+
+{% block form_name %}
+<h5 class="modal-title" id="nodeEditLabel">Редактирование клиента</h5>
+{% endblock %}
+
+{% block node_content %}
+        <div class="col-4">
+            {% if note.photo %}
+                <p><img class="img-fluid img-thumbnail" src="{{note.photo.url}}"></p>
+            {% endif %}
+        </div>
+        <div class="col-6">
+            <h1 class="note" ><span class="header_note">ФИО:</span> <span class="value_note">{{note.fio}}</span></h1>
+            <h1 class="note"><span class="header_note">Дата рождения:</span> <span class="value_note">{{note.birth_date}}</span></h1>
+            <h1 class="note" ><span class="header_note">Адрес:</span> <span class="value_note">{{note.address}}</span></h1>
+            <h1 class="note" ><span class="header_note">Телефон:</span> <span class="value_note">{{note.phone}}</span></h1>
+            <h1 class="note" ><span class="header_note">E-mail:</span> <span class="value_note">{{note.e_mail}}</span></h1>
+            <h1 class="note" ><span class="header_note">Дата регистрации:</span> <span class="value_note">{{note.registration_date}}</span></h1>
+            <h1 class="note" ><span class="header_note">Активность:</span> <span class="value_note">{{note.activity_indicator}}</span></h1>
+        </div>
+{% endblock %}
